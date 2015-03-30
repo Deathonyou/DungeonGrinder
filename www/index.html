@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>grind - p0.1</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	
+	<div class="main">
+		<div ng-view></div>
+	</div>
+	
+	<!-- Vendor Libs -->
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	
+	<!-- custom Libs -->
+	 <script src="js/core.js"></script>
+	
+	<!-- App libs -->
+    <script src="app/app.js"></script>
+    <script src="app/controllers/controller.js"></script>
+	<script src="app/factories/gameFactory.js"></script>
+	<script src="app/factories/mobsFactory.js"></script>
+	<script src="app/factories/herosFactory.js"></script>
+</body>
+</html>

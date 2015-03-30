@@ -1,0 +1,303 @@
+
+// **** colours *****
+@gameBack: #999;
+@mobPanelColor: #444;
+@warroirColor: #FF2B2B;
+@rougeColor: #0F0;
+@mageColor: #1550FF;
+@goldColor: #B38600;
+
+// ***** common vars *****
+@gamePanelWidth: 320px;
+@gamePanelHeight: 580px;
+@imagesPath: "../images/";
+
+// ***** common mixins *****
+.clean-list {
+	list-style-type: none;
+	margin: 0 auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+// ***** fonts *****
+@import "fonts/silkscreen_normal_macroman/stylesheet.css";
+
+/**************************************************************/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'silkscreennormal', Arial, sans-serif;
+	font-size: 13px;
+	letter-spacing: -1px;
+}
+
+.game-panel {
+	width: @gamePanelWidth;
+	height: @gamePanelHeight;
+	background-color: @gameBack;
+}
+
+
+/****************** classes  *******************/
+
+@darkenClassText: 0%;
+
+.class-text-warroir {
+	color: darken(@warroirColor,@darkenClassText);
+}
+.class-text-rouge {
+	color: darken(@rougeColor,@darkenClassText);
+}
+.class-text-mage {
+	color: darken(@mageColor,@darkenClassText);
+}
+
+
+
+
+/****************** gold panel *******************/
+.gold-panel {
+	@panelHeight: 40px;
+	
+	text-align: center;
+	height: @panelHeight;
+	line-height: @panelHeight;
+	background-color: #111;
+	
+	
+	h1 {
+		height: @panelHeight;
+		line-height: @panelHeight;
+		margin: 0;
+		padding: 0;
+		color: @goldColor;
+	}
+}
+
+
+/****************** mob panel *******************/
+.mob-panel {
+	
+	/********* mob vars **********/
+	@mobWidth: 55px;
+	@mobHeight: 70px;
+	@mobMargin: 5px;
+	
+	@spritePosSkeleton1: 0;
+	@spritePosGoblin1: 1;
+	@spritePosImp1: 2;
+	
+	background-color: @mobPanelColor;
+	position: relative;
+	overflow: hidden;
+	
+	.mob-ground {
+		width:  @gamePanelWidth;
+		height: ( (@mobHeight*3)+(@mobMargin*5) * 2);
+		background-image: url("@{imagesPath}ground1.png");
+		
+		position: absolute;
+		
+		background-position: 0 0;
+		transition-property: background-position;
+		transition-duration: 1s;
+		transition-delay: 0.1s;
+	}
+	
+	.mob-rows {
+		.clean-list;
+		display: block;
+		height: (@mobHeight*3)+(@mobMargin*5);
+		position: relative;
+		
+		.mob-row {
+			width: 100%;
+			position: absolute;
+			text-align: center;
+			transition-property: margin-bottom;
+			transition-duration: 1s;
+			
+			&.moving {
+				margin-bottom: @mobHeight;
+				transition-property: none;
+
+			}
+		}
+		.row-0 {
+			bottom: @mobMargin;
+		}
+		.row-1 {
+			bottom: @mobHeight + (@mobMargin*2);
+		}
+		.row-2 {
+			bottom: (@mobHeight * 2) + (@mobMargin*3);
+		}
+		
+		.mob-cols {
+			.clean-list;
+			
+			
+			.mob {
+				display: inline-block;
+				overflow: hidden;
+				width: @mobWidth;
+				height: @mobHeight;
+				margin: 4px;
+				position: relative;
+				
+				
+				color: #FFF;
+				
+				background-image: url("@{imagesPath}mobs.png");
+				background-repeat: no-repeat;
+				
+				
+				&.mob-normal {
+					background-position: 0 0;
+				}
+				&.mob-step {
+					background-position: -(@mobWidth) 0;
+				}
+				&.mob-hit {
+					background-position: -(@mobWidth*2) 0;
+				}
+				
+				&.mob-sprite-Goblin1 {
+					background-position: 0 -(@mobHeight*@spritePosGoblin1);
+					
+					&.mob-normal {
+						background-position: 0 -(@mobHeight*@spritePosGoblin1);
+					}
+					&.mob-step {
+						background-position: -(@mobWidth) -(@mobHeight*@spritePosGoblin1);
+					}
+					&.mob-hit {
+						background-position: -(@mobWidth*2) -(@mobHeight*@spritePosGoblin1);
+					}
+				}
+				
+				&.mob-sprite-imp1 {
+					background-position: 0 -(@mobHeight*@spritePosImp1);
+					
+					&.mob-normal {
+						background-position: 0 -(@mobHeight*@spritePosImp1);
+					}
+					&.mob-step {
+						background-position: -(@mobWidth) -(@mobHeight*@spritePosImp1);
+					}
+					&.mob-hit {
+						background-position: -(@mobWidth*2) -(@mobHeight*@spritePosImp1);
+					}
+				}
+				
+				
+				
+				.life-bar {
+					@barHeight: 7px; 
+					@borderWidth: 3px; 
+					
+					width: @mobWidth - @borderWidth;
+					height: @barHeight - @borderWidth;
+					background-color: #000;
+					position: absolute;
+					top:0;
+					border-width: 2px;
+					border-style: solid;
+					border-color: #878218;
+					
+					div {
+						width: 100%;
+						height: @barHeight - @borderWidth;
+						background-color: #FF0000;
+						transition: all 0s ease 0s;
+					}
+				}
+				
+				.hit-label {
+					position: absolute;
+					top: 30px;
+					width: @mobWidth;
+					text-align: center;
+					font-size: 16px;
+					text-shadow: 2px 2px rgba(0,0,0,0.8);
+				}
+				
+			}
+			
+			
+		}
+		
+		
+	}
+	
+}
+
+/****************** heros panel *******************/
+.heros-panel {
+	
+	.heros-list {
+		.clean-list;
+		
+		.hero {
+			@boxPadding: 5px;
+			
+			display: block;
+			float: left;
+			width: (@gamePanelWidth / 3) - (@boxPadding*2);
+			padding: @boxPadding;
+			font-size: 14px;
+			text-align: center;
+			color: #DDD;
+			
+			@modHeroBack: 35%;
+			
+			&.hero-box-warroir {
+				background-color: darken(@warroirColor,40%);
+			}
+			&.hero-box-rouge {
+				background-color: darken(@rougeColor,@modHeroBack);
+			}
+			&.hero-box-mage {
+				background-color: darken(@mageColor,@modHeroBack);
+			}
+			
+			strong {
+				font-size: 18px;
+			}
+			
+			.weapons-list {
+				@weaponHeight: 40px;
+				
+				.clean-list;
+				display: block;
+				width: 100%;
+				height: @weaponHeight;
+				position: relative;
+				background-color: #333;
+				margin-top: 8px;
+				
+				.weapon-label {
+					height: @weaponHeight;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					color: #FFF;
+					line-height: @weaponHeight;
+					text-align: center;
+					font-size: 11px;
+				}
+				
+				.cooldown-bar {
+					height: @weaponHeight;
+					background-color: #505230;
+				}
+			}
+			
+		}
+		
+	}
+	
+}

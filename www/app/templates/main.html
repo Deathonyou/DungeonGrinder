@@ -1,0 +1,39 @@
+
+<div class="game-panel">
+	
+	<div id="gold-panel" class="gold-panel">
+		<h1 data-gold-total="{{playerGold}}">0</h1>
+	</div>
+	
+	<div id="mob-panel" class="mob-panel" ng-controller="mobsController">
+		
+		<div class="mob-ground"></div>
+		
+		<ul class="mob-rows">
+				<li ng-repeat="(key, row) in displayBoard" class="mob-row row-{{key}} moving">
+					<ul class="mob-cols">
+						<li id="mob-{{mob.mobId}}" ng-repeat="mob in row track by $index" class="mob mob-{{mob.elemClass}} mob-sprite-{{mob.sprite}}" title="{{mob.name}}">
+							<div class="life-bar"><div style="width:{{lifeInPer(mob.hp,mob.maxHp)}}%"></div></div>
+						</li>
+					</ul>
+				</li>
+		</ul>
+
+	</div>
+
+	<div id="heros-panel" class="heros-panel" ng-controller="herosController">
+		<ul class="heros-list">
+				<li ng-repeat="hero in heros track by $index" class="hero hero-box-{{hero.id}}">
+					<strong class="class-text-{{hero.id}}">{{ hero.id }}</strong><br />
+					{{hero.statLabelShort}}: {{hero.stat}}
+					<ul class="weapons-list">
+						<li ng-repeat="(key, weapon) in hero.weapons track by $index" ng-show="weapon.name">
+							<div class="weapon-label">{{ weapon.name }}</div>
+							<div class="cooldown-bar" style="width:{{coolDownPer(hero.coolDowns[key],weapon.coolDown)}}%"></div>
+						</li>
+					</ul>
+				</li>
+		</ul>
+	</div>
+
+</div>

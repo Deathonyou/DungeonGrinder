@@ -1,0 +1,205 @@
+
+/*******************************************************************************************************
+	Controller: game
+*******************************************************************************************************/
+app.controller('gameController', function ($scope, $rootScope, gameFactory) {
+	
+	
+	
+	function init() {
+		$rootScope.playerGold = 0;
+		
+		
+		setTimeout(function(){ $scope.gameReady(); }, 100);
+	}
+	
+	
+	function CheckScopeBeforeApply() {
+		if(!$scope.$$phase) {
+			 $scope.$apply();
+		}
+		else {
+				setTimeout(function(){ CheckScopeBeforeApply(); }, 5);
+		}
+	};
+	
+	
+	// **************** On game start ******************** 
+	$rootScope.$on('startGame', function() {
+		console.log('startGame');
+	});
+	
+	/*************************************************************/
+	
+	$scope.gameReady = function() {
+		$rootScope.$broadcast('startGame');
+		CheckScopeBeforeApply();
+	}
+	
+	init();
+	
+});
+
+
+/*******************************************************************************************************
+	Controller: mobs
+*******************************************************************************************************/
+app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
+	
+	init();
+	
+	var groundYPos = -2;
+	
+	function init() {
+		$scope.mobTypes = [];
+		$scope.mobOnBoard = [];
+		$scope.displayBoard = [];
+	}
+	
+	// **************** On start of game ******************** 
+	$rootScope.$on('startGame', function() {
+		
+		$scope.mobTypes = mobsFactory.getMobTypes();
+		
+		$scope.mobsOnBoard = mobsFactory.getMobsBoard();
+		$scope.displayBoard = $scope.mobsOnBoard;
+	});
+	
+	// **************** On updateMobsBoard ******************** 
+	$rootScope.$on('updateMobsBoard', function() {
+		$scope.mobsOnBoard = mobsFactory.getMobsBoard();
+	});
+	
+	// **************** On newRow ******************** 
+	$rootScope.$on('newRow', function() {
+		
+		// create "move row down" effect by adding "moving" class and remove
+		$('.mob-row').addClass('moving');
+		setTimeout(function(){ 
+			$('.mob-row').removeClass('moving');
+		}, 100);
+		
+		// move the ground by moving the background pos
+		// this is bad, find a better way!
+		groundYPos++;
+		if ( groundYPos > 0 ) {
+			$( ".mob-ground" ).css('background-position','0 '+(75*groundYPos)+'px'	);
+		}
+		
+	});
+	
+	
+	$rootScope.damageMob = function(boardPos,damage, weapon) {
+		var thisMob = $scope.mobsOnBoard[boardPos[0]][boardPos[1]];
+		
+		// add hit effect
+		thisMob.elemClass = "hit";
+		
+		var hitLabelElem = $('<div />')
+			.addClass('hit-label')
+			.addClass('class-text-'+weapon.hero)
+			.html(damage+'hp')
+			.appendTo( '#mob-'+thisMob.mobId )
+			.animate({
+				top: 0,
+			}, 800,'linear');
+		
+		
+		setTimeout(function(){ 
+			thisMob.elemClass = "normal";
+			hitLabelElem.remove();
+			$scope.$apply(); 
+		}, 800);
+		
+		// damage mob
+		thisMob.hp -= damage;
+		
+		// is mob killed
+		if (  thisMob.hp < 1 ) {
+			// hp to zero
+			thisMob.hp = 0;
+			hitLabelElem.remove();
+			
+			// gold!
+			$rootScope.playerGold += (thisMob.maxHp + thisMob.bonusGold);
+			
+			// remove mob from the board
+			$scope.mobsOnBoard = mobsFactory.killMob( boardPos[0], boardPos[1] );
+			
+		}
+		
+		$scope.$apply();
+	}
+	
+	
+	// get mob life in %
+	$scope.lifeInPer = function(hp,maxHp) {
+		return Math.round( ( hp / maxHp ) * 100 );
+	}
+	
+});
+
+
+/*******************************************************************************************************
+	Controller: heros
+*******************************************************************************************************/
+app.controller('herosController', function ($scope,$rootScope, herosFactory) {
+	
+	init();
+	
+	function init() {
+		$scope.heros = [];
+	}
+	
+	
+	// **************** On start of game ******************** 
+	$rootScope.$on('startGame', function() {
+		$scope.heros = herosFactory.getHeros();
+		updateCooldowns();
+	});
+	
+	
+	// for width of weapon cool down bar
+	$scope.coolDownPer = function(coolDownLeft,coolDownTotal) {
+		var per = Math.round( ( coolDownLeft / coolDownTotal ) * 100 );
+		return 100 - per;
+	}
+	
+	// update hero attack cool downs
+	function updateCooldowns() {
+		var coolDownTimoout = setTimeout(function(){ 
+
+			for ( h=0; h<$scope.heros.length; h++ ) {
+				for ( w=0; w<2; w++ ) {
+					if ( $scope.heros[h].coolDowns[w] > -1 ) {
+						
+						// count down
+						$scope.heros[h].coolDowns[w]--;
+						
+						// update page
+						$scope.$apply();
+						
+						// if coolDown = 0
+						if ( $scope.heros[h].coolDowns[w] == 0 ) {
+							
+							// attack with weapon
+							herosFactory.weaponAttack(h,$scope.heros[h].weapons[w]);
+							
+							// reset timeout
+							$scope.heros[h].coolDowns[w] = $scope.heros[h].weapons[w].coolDown;
+						}
+						
+					}
+				}
+			}
+			
+			// loop
+			updateCooldowns();
+			
+		}, 100);
+		
+		
+	}
+	
+});
+
