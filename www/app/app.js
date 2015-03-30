@@ -6,7 +6,7 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/main', {
-        templateUrl: '/gdev/grind/proto1/www/app/templates/main.html',
+        templateUrl: 'app/templates/main.html',
         controller: 'gameController'
       }).
       otherwise({
@@ -14,14 +14,6 @@ app.config(['$routeProvider',
       });
   }]);
 
-
-/*  
-app.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-});
-*/
 
 app.filter('iif', function () {
    return function(input, trueValue, falseValue) {
