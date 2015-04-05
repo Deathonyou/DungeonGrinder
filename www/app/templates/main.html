@@ -24,7 +24,7 @@
 	<div id="heros-panel" class="heros-panel" ng-controller="herosController">
 	
 		<ul class="heros-list">
-				<li ng-repeat="(heroKey,hero) in heros track by $index" class="hero hero-box-{{hero.id}}" ng-click="$parent.activeHeroKey=heroKey">
+				<li ng-repeat="(heroKey,hero) in heros track by $index" class="hero hero-box-{{hero.id}} {{(heroKey==activeHeroKey)?'':'show-hover'}}" ng-click="$parent.activeHeroKey=heroKey">
 					<strong class="class-text-{{hero.id}}">{{ hero.id }}</strong><br />
 					{{hero.statLabelShort}}: {{hero.stat}}
 					<ul class="weapons-list">
