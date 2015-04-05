@@ -80,13 +80,14 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		
 		// add starting weapons to Inventory
 		factory.addToInventory(0,'sword');
+		factory.addToInventory(1,'bow');
+		factory.addToInventory(2,'cone_of_cold');
 		
 		// add weapon, also hard-coded for now
-		factory.equipWeapon(0,0,'sword');
-		factory.equipWeapon(1,0,'bow');
-		factory.equipWeapon(2,0,'cone_of_cold');
+		factory.equipWeapon(0,0,0);
+		factory.equipWeapon(1,0,0);
+		factory.equipWeapon(2,0,0);
 		
-		console.log('test',heros);
 		return heros;
 	}
 	
@@ -107,10 +108,10 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 	/***************************************************************************
 		function - equipWeapon
 	***************************************************************************/
-	factory.equipWeapon = function(heroKey,slot,weaponId) {
+	factory.equipWeapon = function(heroKey,slot,inventoryKey) {
 		
 		// get weapon
-		var weapon = factory.getWeapon(weaponId);
+		var weapon = heros[heroKey].inventory[inventoryKey];
 		
 		// set hero's weapon slot
 		heros[heroKey].weapons[slot] = weapon;
