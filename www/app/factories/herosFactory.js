@@ -82,27 +82,6 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		factory.addWeapon(1,0,'bow');
 		factory.addWeapon(2,0,'cone_of_cold');
 		
-		// start cooldown countdown
-		/*
-		updateCooldowns = function() {
-			
-			coolDownTimoout = setTimeout(function(){ 
-
-				for ( h=0; h<heros.length; h++ ) {
-					for ( c=0; c<2; c++ ) {
-						if ( heros[h].coolDowns[c] > -1 ) {
-							heros[h].coolDowns[c]--;
-							console.log(heros[h].coolDowns[c]);
-							
-						}
-					}
-				}
-				
-			}, 10);
-			
-		}
-		updateCooldowns();
-		*/
 		
 		return heros;
 	}
@@ -120,19 +99,6 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		heros[heroKey].weapons[slot] = weapon;
 		heros[heroKey].coolDowns[slot] = weapon.coolDown;
 		
-		// set attack loop
-		/*
-		clearTimeout(heroCoolDowns[heroKey][slot]);
-		heroAttacks[heroKey][slot] = function() {
-			
-			heroCoolDowns[heroKey][slot] = setTimeout(function(){ 
-				factory.weaponAttack(heroKey,weapon);
-				heroAttacks[heroKey][slot](); //loop
-			}, weapon.coolDown);
-			
-		}
-		heroAttacks[heroKey][slot]();
-		*/
 	}
 	
 	/***************************************************************************
