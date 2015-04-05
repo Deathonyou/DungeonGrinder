@@ -324,8 +324,39 @@ body {
 		height: 150px;
 		padding: 15px;
 		
-		.weapons-holder {
+		.hero-inventory {
+			@inventoryHieght: 80px;
+			@inventoryPadding: 8px;
+			@inventBodyHeight: (@inventoryHieght - (@inventoryPadding*2));
+			
 			.clean-list;
+			
+			display: block;
+			height: @inventBodyHeight;
+			padding: @inventoryPadding;
+			
+			background-color: #222;
+			
+			.inventory-item {
+				display: block;
+				float: left;
+				width: 90px;
+				height: @inventBodyHeight;
+				margin-right: @inventoryPadding;
+				
+				text-align: center;
+				
+				.item-icon {
+					width: 40px;
+					height: 40px;
+					margin: 0 auto;
+					background-color: #666;
+				}
+				
+				.item-name {
+					color: #FFF;
+				}
+			}
 		}
 		
 	}

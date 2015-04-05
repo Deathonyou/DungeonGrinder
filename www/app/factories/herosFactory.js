@@ -26,7 +26,8 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 			graphic: 'axe1',
 			hero: 'warroir',
 			cost: 0,
-			attackPat: 'cleaveFromLeft',
+			/*attackPat: 'cleaveFromLeft',*/
+			attackPat: 'left',
 			coolDown: 40,
 			damage: 2,
 			text: 'A basic axe'
@@ -80,6 +81,7 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		
 		// add starting weapons to Inventory
 		factory.addToInventory(0,'sword');
+		factory.addToInventory(0,'axe');
 		factory.addToInventory(1,'bow');
 		factory.addToInventory(2,'cone_of_cold');
 		

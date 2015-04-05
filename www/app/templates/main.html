@@ -38,16 +38,15 @@
 		
 		<div class="active-hero hero-box-{{heros[activeHeroKey].id}}">
 			
-			<ul class="weapons-holder">
+			<ul class="hero-inventory">
 				
-				<li class="held-weapon"></li>
+				<li class="inventory-item" ng-repeat="(itemKey,item) in heros[activeHeroKey].inventory">
+					<div class="item-icon"></div>
+					<div class="item-name">{{item.name}}</div>
+				</li>
 				
 			</ul>
 			
-			{{ heros[activeHeroKey].id }}
-			
-
-
 		</div>
 		
 	</div>
