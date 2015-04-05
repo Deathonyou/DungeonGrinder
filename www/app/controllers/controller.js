@@ -149,6 +149,7 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 	
 	function init() {
 		$scope.heros = [];
+		$scope.activeHeroKey = 0;
 	}
 	
 	

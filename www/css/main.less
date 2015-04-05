@@ -237,6 +237,35 @@ body {
 /****************** heros panel *******************/
 .heros-panel {
 	
+	
+	/****** hero boxes *******/
+	@modHeroBack: 35%;
+	@modHeroBackHighlight: 30%;
+			
+	.hero-box-warroir {
+		background-color: darken(@warroirColor,@modHeroBack);
+		
+		&:hover {
+			background-color: darken(@warroirColor,@modHeroBackHighlight);
+		}
+	}
+	.hero-box-rouge {
+		background-color: darken(@rougeColor,@modHeroBack);
+		
+		&:hover {
+			background-color: darken(@rougeColor,@modHeroBackHighlight);
+		}
+	}
+	.hero-box-mage {
+		background-color: darken(@mageColor,@modHeroBack);
+		
+		&:hover {
+			background-color: darken(@mageColor,@modHeroBackHighlight);
+		}
+	}
+	
+	
+	/****** heros list *******/
 	.heros-list {
 		.clean-list;
 		
@@ -250,18 +279,7 @@ body {
 			font-size: 14px;
 			text-align: center;
 			color: #DDD;
-			
-			@modHeroBack: 35%;
-			
-			&.hero-box-warroir {
-				background-color: darken(@warroirColor,40%);
-			}
-			&.hero-box-rouge {
-				background-color: darken(@rougeColor,@modHeroBack);
-			}
-			&.hero-box-mage {
-				background-color: darken(@mageColor,@modHeroBack);
-			}
+			cursor: pointer;
 			
 			strong {
 				font-size: 18px;
@@ -299,5 +317,18 @@ body {
 		}
 		
 	}
+	
+	/****** hero active *******/
+	.active-hero {
+		
+		height: 150px;
+		padding: 15px;
+		
+		.weapons-holder {
+			.clean-list;
+		}
+		
+	}
+	
 	
 }
