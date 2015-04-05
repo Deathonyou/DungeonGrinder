@@ -77,14 +77,30 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		heros.push( createHero('warroir','str','Strength') );
 		heros.push( createHero('rouge','dex','Dexterity') );
 		heros.push( createHero('mage','int','intelligence') );
-
+		
+		// add starting weapons to Inventory
+		factory.addToInventory(0,'sword');
+		
 		// add weapon, also hard-coded for now
 		factory.equipWeapon(0,0,'sword');
 		factory.equipWeapon(1,0,'bow');
 		factory.equipWeapon(2,0,'cone_of_cold');
 		
-		
+		console.log('test',heros);
 		return heros;
+	}
+	
+	
+	/***************************************************************************
+		function - addToInventory
+	***************************************************************************/
+	factory.addToInventory = function(heroKey,weaponId) {
+		
+		// get weapon
+		var weapon = factory.getWeapon(weaponId);
+		
+		// add to inventory
+		heros[heroKey].inventory.push(weapon);
 	}
 	
 	
