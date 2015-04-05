@@ -68,7 +68,8 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 				statLabelShort: statLabelShort,
 				statLabelLong: statLabelLong,
 				weapons: [ null, null ],
-				coolDowns: [ -1, -1 ]
+				coolDowns: [ -1, -1 ],
+				inventory: []
 			}
 		}
 		
@@ -78,9 +79,9 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		heros.push( createHero('mage','int','intelligence') );
 
 		// add weapon, also hard-coded for now
-		factory.addWeapon(0,0,'sword');
-		factory.addWeapon(1,0,'bow');
-		factory.addWeapon(2,0,'cone_of_cold');
+		factory.equipWeapon(0,0,'sword');
+		factory.equipWeapon(1,0,'bow');
+		factory.equipWeapon(2,0,'cone_of_cold');
 		
 		
 		return heros;
@@ -88,9 +89,9 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 	
 	
 	/***************************************************************************
-		function - addWeapon
+		function - equipWeapon
 	***************************************************************************/
-	factory.addWeapon = function(heroKey,slot,weaponId) {
+	factory.equipWeapon = function(heroKey,slot,weaponId) {
 		
 		// get weapon
 		var weapon = factory.getWeapon(weaponId);
