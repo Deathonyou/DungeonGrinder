@@ -22,7 +22,6 @@
 	</div>
 
 	<div id="heros-panel" class="heros-panel" ng-controller="herosController">
-	
 		<ul class="heros-list">
 				<li ng-repeat="(heroKey,hero) in heros track by $index" class="hero hero-box-{{hero.id}} {{(heroKey==activeHeroKey)?'':'show-hover'}}" ng-click="$parent.activeHeroKey=heroKey">
 					<strong class="class-text-{{hero.id}}">{{ hero.id }}</strong><br />
@@ -40,7 +39,7 @@
 			
 			<ul class="hero-inventory">
 				
-				<li class="inventory-item" ng-repeat="(itemKey,item) in heros[activeHeroKey].inventory">
+				<li ng-repeat="(itemKey,item) in heros[activeHeroKey].inventory" class="inventory-item {{ (isWeaponEquipped(activeHeroKey,item.id))?'equipped':''}}">
 					<div class="item-icon"></div>
 					<div class="item-name">{{item.name}}</div>
 				</li>

@@ -166,6 +166,21 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 		return 100 - per;
 	}
 	
+
+	$scope.isWeaponEquipped = function(activeHeroKey,itemId) {
+			var isEquipped = false;
+			
+			$.each($scope.heros[activeHeroKey].weapons , function() {
+				if ( this.id == itemId )  {
+					isEquipped = true;
+					return true;
+				}
+			});
+
+		return isEquipped;
+	}
+	
+	
 	// update hero attack cool downs
 	function updateCooldowns() {
 		var coolDownTimoout = setTimeout(function(){ 
