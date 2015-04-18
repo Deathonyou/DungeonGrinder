@@ -167,6 +167,14 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 		return 100 - per;
 	}
 	
+	
+	$scope.selectThisHero = function(thisActiveHeroKey) {
+			if ( thisActiveHeroKey != $scope.activeHeroKey ) {
+					$scope.activeHeroKey = thisActiveHeroKey;
+					$scope.selectedItem = null;
+			}
+	}
+	
 
 	$scope.isWeaponEquipped = function(activeHeroKey,itemId) {
 			var isEquipped = false;
