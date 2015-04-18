@@ -220,7 +220,7 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		});
 		
 		
-		console.log(heros[heroKey].id+' attacks with '+weapon.name, targetedMobs);
+		//console.log(heros[heroKey].id+' attacks with '+weapon.name, targetedMobs);
 		
 	}
 

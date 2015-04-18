@@ -150,6 +150,7 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 	function init() {
 		$scope.heros = [];
 		$scope.activeHeroKey = 0;
+		$scope.selectedItem = null;
 	}
 	
 	
@@ -178,6 +179,15 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 			});
 
 		return isEquipped;
+	}
+	
+	$scope.selectThisItem = function(itemObj) {
+			if  ( $scope.selectedItem != null && itemObj.name == $scope.selectedItem.name ) {
+				$scope.selectedItem = null;
+			}
+			else {
+				$scope.selectedItem = itemObj;
+			}
 	}
 	
 	

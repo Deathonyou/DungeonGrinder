@@ -39,12 +39,18 @@
 			
 			<ul class="hero-inventory">
 				
-				<li ng-repeat="(itemKey,item) in heros[activeHeroKey].inventory" class="inventory-item {{ (isWeaponEquipped(activeHeroKey,item.id))?'equipped':''}}">
+				<li ng-repeat="(itemKey,item) in heros[activeHeroKey].inventory" class="inventory-item {{ (isWeaponEquipped(activeHeroKey,item.id))?'equipped':''}}" ng-click="$parent.selectThisItem(item)">
 					<div class="item-icon"></div>
 					<div class="item-name">{{item.name}}</div>
 				</li>
 				
 			</ul>
+			
+			<div class="selected-item" ng-hide="selectedItem==null">
+				<h2>{{selectedItem.name}}</h2>
+				<div>{{selectedItem.text}}</div>
+				<div>Cooldown: {{selectedItem.coolDown}}</div>
+			</div>
 			
 		</div>
 		
