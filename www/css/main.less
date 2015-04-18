@@ -329,6 +329,7 @@ body {
 			@inventoryHieght: 80px;
 			@inventoryPadding: 8px;
 			@inventBodyHeight: (@inventoryHieght - (@inventoryPadding*2));
+			@invenotoryBgColor: #222;
 			
 			.clean-list;
 			
@@ -336,7 +337,7 @@ body {
 			height: @inventBodyHeight;
 			padding: @inventoryPadding;
 			
-			background-color: #222;
+			background-color: @invenotoryBgColor;
 			
 			.inventory-item {
 				display: block;
@@ -344,11 +345,24 @@ body {
 				width: 90px;
 				height: @inventBodyHeight;
 				margin-right: @inventoryPadding;
+				cursor: pointer;
+				border-width: 2px;
+				border-style: solid;
 				
 				text-align: center;
 				
 				&.equipped {
-					background-color: #00F;
+					background-color: #333;
+				}
+				&.not-equipped {
+					
+				}
+				
+				&.selected {
+					border-color: #F00;
+				}
+				&.not-selected {
+					border-color: @invenotoryBgColor;
 				}
 				
 				.item-icon {
