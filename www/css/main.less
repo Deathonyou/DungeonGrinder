@@ -281,20 +281,38 @@ body {
 			color: #DDD;
 			cursor: pointer;
 			
+			&.active {
+				cursor: default;
+				
+				.weapons-list li.open {
+					border-color: #F00;
+					cursor: pointer;
+				}
+			}
+			
+			
 			strong {
 				font-size: 18px;
 			}
 			
+			/*** weapon list ***/
 			.weapons-list {
 				@weaponHeight: 40px;
 				
 				.clean-list;
 				display: block;
 				width: 100%;
-				height: @weaponHeight;
+				height: (@weaponHeight+4px);
 				position: relative;
 				background-color: #333;
 				margin-top: 8px;
+				
+				li {
+					border-width: 2px;
+					border-style: solid;
+					border-color: #444;
+				}
+
 				
 				.weapon-label {
 					height: @weaponHeight;
@@ -329,7 +347,7 @@ body {
 			@inventoryHieght: 80px;
 			@inventoryPadding: 8px;
 			@inventBodyHeight: (@inventoryHieght - (@inventoryPadding*2));
-			@invenotoryBgColor: #222;
+			@inventoryBgColor: #222;
 			
 			.clean-list;
 			
@@ -337,7 +355,7 @@ body {
 			height: @inventBodyHeight;
 			padding: @inventoryPadding;
 			
-			background-color: @invenotoryBgColor;
+			background-color: @inventoryBgColor;
 			
 			.inventory-item {
 				display: block;
@@ -362,7 +380,7 @@ body {
 					border-color: #F00;
 				}
 				&.not-selected {
-					border-color: @invenotoryBgColor;
+					border-color: @inventoryBgColor;
 				}
 				
 				.item-icon {

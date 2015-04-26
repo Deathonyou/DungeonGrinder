@@ -23,11 +23,11 @@
 
 	<div id="heros-panel" class="heros-panel" ng-controller="herosController">
 		<ul class="heros-list">
-				<li ng-repeat="(heroKey,hero) in heros track by $index" class="hero hero-box-{{hero.id}} {{(heroKey==activeHeroKey)?'':'show-hover'}}" ng-click="$parent.selectThisHero(heroKey)">
+				<li ng-repeat="(heroKey,hero) in heros track by $index" class="hero hero-box-{{hero.id}} {{(heroKey==activeHeroKey)?'active':'show-hover'}}" ng-click="$parent.selectThisHero(heroKey)">
 					<strong class="class-text-{{hero.id}}">{{ hero.id }}</strong><br />
 					{{hero.statLabelShort}}: {{hero.stat}}
 					<ul class="weapons-list">
-						<li ng-repeat="(key, weapon) in hero.weapons track by $index" ng-show="weapon.name">
+						<li ng-repeat="(key, weapon) in hero.weapons track by $index" ng-show="weapon.name" class="{{ ($parent.selectedItem.id==item.id)?'closed':'open'}}">
 							<div class="weapon-label">{{ weapon.name }}</div>
 							<div class="cooldown-bar" style="width:{{coolDownPer(hero.coolDowns[key],weapon.coolDown)}}%"></div>
 						</li>
