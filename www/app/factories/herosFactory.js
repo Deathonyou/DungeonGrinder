@@ -58,7 +58,7 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 	
 	
 	/***************************************************************************
-		function - getSecrets
+		function - getHeros
 	***************************************************************************/
 	factory.getHeros = function() {
 		
@@ -116,8 +116,10 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		var weapon = heros[heroKey].inventory[inventoryKey];
 		
 		// set hero's weapon slot
-		heros[heroKey].weapons[slot] = weapon;
-		heros[heroKey].coolDowns[slot] = weapon.coolDown;
+		if ( heros[heroKey].weapons[slot] == null || weapon.id != heros[heroKey].weapons[slot].id ) {
+			heros[heroKey].weapons[slot] = weapon;
+			heros[heroKey].coolDowns[slot] = weapon.coolDown;
+		}
 		
 	}
 	

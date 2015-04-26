@@ -189,13 +189,21 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 		return isEquipped;
 	}
 	
-	$scope.selectThisItem = function(itemObj) {
+	$scope.selectThisItem = function(itemObj,inventoryKey) {
 			if  ( $scope.selectedItem != null && itemObj.name == $scope.selectedItem.name ) {
 				$scope.selectedItem = null;
 			}
 			else {
 				$scope.selectedItem = itemObj;
+				$scope.selectedItem.inventoryKey = inventoryKey;
 			}
+	}
+	
+	$scope.addWeaponToSlot = function(thisHeroKey,slot) {
+		if ( $scope.selectedItem != null && thisHeroKey == $scope.activeHeroKey  ) {
+				herosFactory.equipWeapon(thisHeroKey,slot,$scope.selectedItem.inventoryKey);
+				$scope.selectedItem = null;
+		}
 	}
 	
 	
