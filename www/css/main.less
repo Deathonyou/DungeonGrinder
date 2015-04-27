@@ -74,6 +74,21 @@ body {
 		padding: 0;
 		color: @goldColor;
 	}
+	
+	.gold-coin {
+		padding-right: 30px;
+		background-image: url("@{imagesPath}coin_large.png");
+		background-repeat: no-repeat;
+		background-position: right center; 
+	}
+	.coin-icon {
+		display: inline-block;
+		width: 21px;
+		height: 21px;
+		background-image: url("@{imagesPath}coin_large.png");
+		background-repeat: no-repeat;
+	}
+	
 }
 
 
@@ -88,6 +103,7 @@ body {
 	@spritePosSkeleton1: 0;
 	@spritePosGoblin1: 1;
 	@spritePosImp1: 2;
+	@spritePosCyclops1: 3;
 	
 	background-color: @mobPanelColor;
 	position: relative;
@@ -190,6 +206,21 @@ body {
 					&.mob-hit {
 						background-position: -(@mobWidth*2) -(@mobHeight*@spritePosImp1);
 					}
+				}
+				
+				&.mob-sprite-cyclops1 {
+					background-position: 0 -(@mobHeight*@spritePosCyclops1);
+					
+					&.mob-normal {
+						background-position: 0 -(@mobHeight*@spritePosCyclops1);
+					}
+					&.mob-step {
+						background-position: -(@mobWidth) -(@mobHeight*@spritePosCyclops1);
+					}
+					&.mob-hit {
+						background-position: -(@mobWidth*2) -(@mobHeight*@spritePosCyclops1);
+					}
+					
 				}
 				
 				
@@ -411,11 +442,12 @@ body {
 				}
 				
 				.item-icon {
-					margin: 5px auto 2px auto;
+					margin: 4px auto 5px auto;
 				}
 				
 				.item-name {
 					color: #FFF;
+					line-height: 10px;
 				}
 			}
 		}

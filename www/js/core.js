@@ -1,7 +1,7 @@
 
 
 function updateGold() {
-	var goldElem = $('.gold-panel h1');
+	var goldElem = $('.gold-panel [data-gold-total]');
 	var goldDisplay = parseInt( goldElem.html() );
 	var goldTotal = parseInt( goldElem.attr('data-gold-total') );
 	
