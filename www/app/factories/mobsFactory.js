@@ -44,6 +44,17 @@ app.factory('mobsFactory', function($rootScope) {
 				sprite: 'imp1',
 				rowMin: 3,
 				rowMax: 5
+			},
+			{
+				typeId: 'cyclops',
+				name: 'Cyclops',
+				level: 1,
+				maxHp: 30,
+				bonusGold: 0,
+				types: 'gaint',
+				sprite: 'cyclops1',
+				rowMin: 1,
+				rowMax: 2
 			}
 		];
 		
@@ -101,7 +112,6 @@ app.factory('mobsFactory', function($rootScope) {
 		function - getMobRow
 	***************************************************************************/
 	factory.getMobRow = function() {
-		
 		var row = [ ];
 		var mobKey = Math.floor(Math.random() * mobTypes.length); 
 		var selectedMobType = mobTypes[mobKey];
