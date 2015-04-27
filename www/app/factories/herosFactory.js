@@ -26,9 +26,8 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 			graphic: 'axe1',
 			hero: 'warroir',
 			cost: 0,
-			/*attackPat: 'cleaveFromLeft',*/
-			attackPat: 'left',
-			coolDown: 40,
+			attackPat: 'cleaveFromLeft',
+			coolDown: 70,
 			damage: 2,
 			text: 'A basic axe'
 		},
@@ -208,6 +207,24 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 				}
 				
 				break;
+				
+				case('cleaveFromLeft'): // attack two left targets
+					
+					// target 1
+					targetedMobs[0] = {
+						mobObj: mobsFactory.selectMobFromLeft(1,0),
+						damage: 1
+					}
+					
+					// get neighbours
+					var neighbours = mobsFactory.selectNeighbours(targetedMobs[0].mobObj);
+					
+					// taget 2
+					if ( neighbours.right ) {
+						targetedMobs[1] = { mobObj: neighbours.right, damage: 1 } ;
+					}
+					
+					break;
 			
 			default:
 				console.log('ERROR: unknow attackPat');
