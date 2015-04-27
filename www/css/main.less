@@ -314,7 +314,7 @@ body {
 			
 			/*** weapon list ***/
 			.weapons-list {
-				@weaponHeight: 40px;
+				@weaponHeight: 36px;
 				
 				.clean-list;
 				display: block;
@@ -341,11 +341,18 @@ body {
 					line-height: @weaponHeight;
 					text-align: center;
 					font-size: 11px;
+					
+					.item-icon {
+						position: absolute;
+						top: 5px;
+						left: 8px;
+						background-color: rgba(0,0,0,0.3);
+					}
 				}
 				
 				.cooldown-bar {
 					height: @weaponHeight;
-					background-color: #505230;
+					background-color: #848400;
 				}
 			}
 			

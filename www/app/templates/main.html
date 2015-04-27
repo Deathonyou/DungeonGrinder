@@ -28,7 +28,7 @@
 					{{hero.statLabelShort}}: {{hero.stat}}
 					<ul class="weapons-list">
 						<li ng-repeat="(key, weapon) in hero.weapons track by $index" ng-show="weapon.name" class="{{ ($parent.selectedItem.id==item.id)?'closed':'open'}}" ng-click="$parent.addWeaponToSlot(heroKey,key)">
-							<div class="weapon-label">{{ weapon.name }}</div>
+							<div class="weapon-label"><div class="item-icon item-{{weapon.graphic}}"></div></div>
 							<div class="cooldown-bar" style="width:{{coolDownPer(hero.coolDowns[key],weapon.coolDown)}}%"></div>
 						</li>
 					</ul>
