@@ -60,7 +60,6 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 	$rootScope.$on('startGame', function() {
 		
 		$scope.mobTypes = mobsFactory.getMobTypes();
-		
 		$scope.mobsOnBoard = mobsFactory.getMobsBoard();
 		$scope.displayBoard = $scope.mobsOnBoard;
 	});
@@ -72,7 +71,7 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 	
 	// **************** On newRow ******************** 
 	$rootScope.$on('newRow', function() {
-		
+		$('.mob-label').removeClass('show');
 		
 		// create "move row down" effect by adding "moving" class and remove
 		$('.mob-row').addClass('moving');
@@ -81,8 +80,7 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 			
 			// get first mob
 			var firstMob = $scope.mobsOnBoard[0][0];
-			console.log(firstMob);
-			$('.mob-label').html( firstMob.name );
+			$('.mob-label').html( firstMob.name ).addClass('show');
 		}, 100);
 		
 		// move the ground by moving the background pos
