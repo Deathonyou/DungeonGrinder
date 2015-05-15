@@ -246,21 +246,38 @@ body {
 					}
 				}
 				
-				.hit-label {
-					position: absolute;
-					top: 30px;
-					width: @mobWidth;
-					text-align: center;
-					font-size: 16px;
-					text-shadow: 2px 2px rgba(0,0,0,0.8);
-				}
-				
 			}
 			
 			
 		}
 		
 		
+	}
+	
+	.hit-label {
+		position: absolute;
+		top: 30px;
+		width: @mobWidth;
+		text-align: center;
+		font-size: 16px;
+		text-shadow: 2px 2px rgba(0,0,0,0.8);
+	}
+	
+	.death-holder {
+		position: absolute;
+		width: @mobWidth ;
+		height: @mobHeight;
+		padding: 4px;
+		
+		&.vpos-0 {
+			bottom: @mobMargin ;
+		}
+		&.vpos-1 {
+			bottom: @mobHeight + (@mobMargin*2);
+		}
+		&.vpos-2 {
+			bottom: (@mobHeight * 2) + (@mobMargin*3);
+		}
 	}
 	
 	.mob-label {

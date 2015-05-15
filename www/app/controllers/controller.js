@@ -71,6 +71,8 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 	
 	// **************** On newRow ******************** 
 	$rootScope.$on('newRow', function() {
+		
+		// hide mob label
 		$('.mob-label').removeClass('show');
 		
 		// create "move row down" effect by adding "moving" class and remove
@@ -80,6 +82,8 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 			
 			// get first mob
 			var firstMob = $scope.mobsOnBoard[0][0];
+			
+			// update and show mob label
 			$('.mob-label').html( firstMob.name ).addClass('show');
 		}, 100);
 		
@@ -126,6 +130,22 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 			
 			// gold!
 			$rootScope.playerGold += (thisMob.maxHp + thisMob.bonusGold);
+			
+			// create death-holder, to hold visuals for mob after it has beeen removed
+			var deadMobElemPos = $('#mob-'+thisMob.mobId).position();
+			var deathHolderElem = $('<div />')
+				.addClass('death-holder')
+				.addClass('vpos-'+boardPos[0])
+				.css('left', deadMobElemPos.left)
+				.appendTo( $('.mob-panel') );
+			
+			// move hit label to death holder
+			hitLabelElem.appendTo(deathHolderElem);
+			
+			// remove death holder
+			setTimeout(function(){ 
+				deathHolderElem.remove();
+			}, 2000);
 			
 			// remove mob from the board
 			$scope.mobsOnBoard = mobsFactory.killMob( boardPos[0], boardPos[1] );
