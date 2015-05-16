@@ -129,7 +129,8 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 			hitLabelElem.remove();
 			
 			// gold!
-			$rootScope.playerGold += (thisMob.maxHp + thisMob.bonusGold);
+			var goldDrop = thisMob.maxHp + thisMob.bonusGold;
+			$rootScope.playerGold += goldDrop;
 			
 			// create death-holder, to hold visuals for mob after it has beeen removed
 			var deadMobElemPos = $('#mob-'+thisMob.mobId).position();
@@ -141,6 +142,15 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 			
 			// move hit label to death holder
 			hitLabelElem.appendTo(deathHolderElem);
+			
+			// add coin drop label
+			var coinDropLabelElem = $('<div />')
+				.addClass('coindrop-label')
+				.html(goldDrop)
+				.appendTo( deathHolderElem )
+				.animate({
+					top: 0,
+				}, 2000,'linear');
 			
 			// remove death holder
 			setTimeout(function(){ 
