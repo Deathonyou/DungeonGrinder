@@ -149,13 +149,13 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 				.html(goldDrop)
 				.appendTo( deathHolderElem )
 				.animate({
-					top: 0,
-				}, 2000,'linear');
+					top: 0
+				}, 1500,'linear');
 			
 			// remove death holder
 			setTimeout(function(){ 
 				deathHolderElem.remove();
-			}, 2000);
+			}, 1500);
 			
 			// remove mob from the board
 			$scope.mobsOnBoard = mobsFactory.killMob( boardPos[0], boardPos[1] );
