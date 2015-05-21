@@ -125,6 +125,7 @@ app.factory('mobsFactory', function($rootScope) {
 			// create mob for row
 			row[i] = { }
 			row[i].name = selectedMobType.name;
+			row[i].types = selectedMobType.types;
 			row[i].mobId = mobCount;
 			row[i].maxHp = selectedMobType.maxHp;
 			row[i].bonusGold = selectedMobType.bonusGold;

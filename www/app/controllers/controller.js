@@ -8,7 +8,13 @@ app.controller('gameController', function ($scope, $rootScope, gameFactory) {
 	
 	function init() {
 		$rootScope.playerGold = 0;
-		
+		$rootScope.playerLog = {
+				timePlayed: 0,
+				goldCollected: 0,
+				mobsKilled: 0,
+				mobTypesKilled: [],
+				mobNameKilled: []
+		};
 		
 		setTimeout(function(){ $scope.gameReady(); }, 100);
 	}
@@ -128,9 +134,26 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 			thisMob.hp = 0;
 			hitLabelElem.remove();
 			
+			// add log - mobsKilled
+			$rootScope.playerLog.mobsKilled++; 
+			
+			// add log - mobTypesKilled
+			if ( !(thisMob.types in $rootScope.playerLog.mobTypesKilled) ) {
+				$rootScope.playerLog.mobTypesKilled[thisMob.types] = 0;
+			}
+			$rootScope.playerLog.mobTypesKilled[thisMob.types]++;
+			
+			// add log - mobNameKilled
+			if ( !(thisMob.name in $rootScope.playerLog.mobNameKilled) ) {
+				$rootScope.playerLog.mobNameKilled[thisMob.name] = 0;
+			}
+			$rootScope.playerLog.mobNameKilled[thisMob.name]++;
+			
+			
 			// gold!
 			var goldDrop = thisMob.maxHp + thisMob.bonusGold;
 			$rootScope.playerGold += goldDrop;
+			$rootScope.playerLog.goldCollected += goldDrop; // add log
 			
 			// create death-holder, to hold visuals for mob after it has beeen removed
 			var deadMobElemPos = $('#mob-'+thisMob.mobId).position();
@@ -159,7 +182,6 @@ app.controller('mobsController', function ($scope,$rootScope, mobsFactory) {
 			
 			// remove mob from the board
 			$scope.mobsOnBoard = mobsFactory.killMob( boardPos[0], boardPos[1] );
-			
 		}
 		
 		$scope.$apply();
