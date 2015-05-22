@@ -63,6 +63,17 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 			coolDown: 60,
 			damage: 2,
 			text: 'Casts a cone of cold'
+		},
+		{
+			id: 'chain_lighting',
+			name: 'Chain Lighting',
+			graphic: 'cold1',
+			hero: 'mage',
+			cost: 0,
+			attackPat: 'chain',
+			coolDown: 80,
+			damage: 2,
+			text: 'Casts chain lighting'
 		}
 	];
 	
@@ -95,6 +106,7 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		factory.addToInventory(0,'mace');
 		factory.addToInventory(1,'bow');
 		factory.addToInventory(2,'cone_of_cold');
+		factory.addToInventory(2,'chain_lighting');
 		
 		// add weapon, also hard-coded for now
 		factory.equipWeapon(0,0,0);
@@ -234,6 +246,17 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 					// taget 2
 					if ( neighbours.right ) {
 						targetedMobs[1] = { mobObj: neighbours.right, damage: 1 } ;
+					}
+					
+					break;
+					
+				case('chain'): // attack one in each row
+					
+					for (i = 0; i < 3; i++) {
+						targetedMobs[i] = {
+							mobObj: mobsFactory.selectRandomInRow(i),
+							damage: 1
+						}
 					}
 					
 					break;
