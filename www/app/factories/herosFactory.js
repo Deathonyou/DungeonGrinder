@@ -34,7 +34,7 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		{
 			id: 'mace',
 			name: 'Basic Mace',
-			graphic: 'sword',
+			graphic: 'mace1',
 			hero: 'warroir',
 			cost: 0,
 			attackPat: 'left',
@@ -67,7 +67,7 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		{
 			id: 'chain_lighting',
 			name: 'Chain Lighting',
-			graphic: 'cold1',
+			graphic: 'lighting1',
 			hero: 'mage',
 			cost: 0,
 			attackPat: 'chain',
