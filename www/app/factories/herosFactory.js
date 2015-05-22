@@ -32,6 +32,17 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 			text: 'A basic axe'
 		},
 		{
+			id: 'mace',
+			name: 'Basic Mace',
+			graphic: 'sword',
+			hero: 'warroir',
+			cost: 0,
+			attackPat: 'left',
+			coolDown: 140,
+			damage: 4,
+			text: 'A basic mace'
+		},
+		{
 			id: 'bow',
 			name: 'Basic Bow',
 			graphic: 'bow1',
@@ -76,11 +87,12 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		// hard-coded list of heros (for now)
 		heros.push( createHero('warroir','str','Strength') );
 		heros.push( createHero('rouge','dex','Dexterity') );
-		heros.push( createHero('mage','int','intelligence') );
+		heros.push( createHero('mage','int','Intelligence') );
 		
 		// add starting weapons to Inventory
 		factory.addToInventory(0,'sword');
 		factory.addToInventory(0,'axe');
+		factory.addToInventory(0,'mace');
 		factory.addToInventory(1,'bow');
 		factory.addToInventory(2,'cone_of_cold');
 		
