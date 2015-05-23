@@ -283,6 +283,11 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 							// attack with weapon
 							herosFactory.weaponAttack(h,$scope.heros[h].weapons[w]);
 							
+							// show attack
+							var thisHeroElem = $('.hero.hero-box-'+$scope.heros[h].id);
+							thisHeroElem.addClass('attacking');
+							setTimeout(function(){ $('.hero').removeClass('attacking'); }, 500);
+							
 							// reset timeout
 							$scope.heros[h].coolDowns[w] = $scope.heros[h].weapons[w].coolDown;
 						}

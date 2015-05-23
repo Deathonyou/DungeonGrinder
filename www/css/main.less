@@ -417,6 +417,14 @@ body {
 				}
 			}
 			
+			&.attacking {
+				
+				.weapons-list li {
+					border-color: #AAA;
+				}
+				
+			}
+			
 			
 			strong {
 				font-size: 18px;
@@ -438,6 +446,10 @@ body {
 					border-width: 2px;
 					border-style: solid;
 					border-color: #444;
+					
+					-webkit-transition : border 250ms ease-out;
+					 -o-transition : border 250ms ease-out;
+					 transition : border 250ms ease-out;
 				}
 
 				
