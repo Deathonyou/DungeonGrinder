@@ -1,8 +1,8 @@
 
+@import "globals";
 
 /****************** items *******************/
 @itemIconLength: 30px;
-
 
 .item-icon {
 	width: @itemIconLength;
@@ -11,6 +11,8 @@
 	background-color: #333;
 	background-image: url("@{imagesPath}items.png");
 	background-repeat: no-repeat;
+	
+	
 	
 	&.item-sword1 { background-position: -(@itemIconLength*0) -(@itemIconLength*1) }
 	&.item-bow1 { background-position: -(@itemIconLength*0) -(@itemIconLength*2) }
