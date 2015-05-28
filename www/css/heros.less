@@ -12,14 +12,18 @@
 	background-image: url("@{imagesPath}items.png");
 	background-repeat: no-repeat;
 	
+	// mixin for sprite pos
+	.item-sprite-pos(@col: 0; @row:0) {
+		background-position: -(@itemIconLength*@col) -(@itemIconLength*@row)
+	}
 	
-	
-	&.item-sword1 { background-position: -(@itemIconLength*0) -(@itemIconLength*1) }
-	&.item-bow1 { background-position: -(@itemIconLength*0) -(@itemIconLength*2) }
-	&.item-cold1 { background-position: -(@itemIconLength*0) -(@itemIconLength*3) }
-	&.item-axe1 { background-position: -(@itemIconLength*0) -(@itemIconLength*4) }
-	&.item-mace1 { background-position: -(@itemIconLength*0) -(@itemIconLength*5) }
-	&.item-lighting1 { background-position: -(@itemIconLength*0) -(@itemIconLength*6) }
+	// weapon sprites
+	&.item-sword1 	{ .item-sprite-pos( 0; 1 ); }
+	&.item-bow1 		{ .item-sprite-pos( 0; 2 ); }
+	&.item-cold1 		{ .item-sprite-pos( 0; 3 ); }
+	&.item-axe1 		{ .item-sprite-pos( 0; 4 ); }
+	&.item-mace1 		{ .item-sprite-pos( 0; 5 ); }
+	&.item-lighting1 	{ .item-sprite-pos( 0; 6 ); }
 }
 
 
@@ -109,10 +113,8 @@
 					border-width: 2px;
 					border-style: solid;
 					border-color: #444;
-					
-					-webkit-transition : border 250ms ease-out;
-					 -o-transition : border 250ms ease-out;
-					 transition : border 250ms ease-out;
+					 
+					 .transition( ~"border", 250ms );
 				}
 
 				

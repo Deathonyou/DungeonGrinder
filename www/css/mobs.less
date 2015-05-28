@@ -23,13 +23,9 @@
 		width:  @gamePanelWidth;
 		height: ( (@mobHeight*3)+(@mobMargin*5) * 2);
 		background-image: url("@{imagesPath}ground1.png");
-		
 		position: absolute;
-		
 		background-position: 0 0;
-		transition-property: background-position;
-		transition-duration: 1s;
-		transition-delay: 0.1s;
+		.transition( ~"background-position", 1s, ~"", 0.1s);
 	}
 	
 	.mob-rows {
@@ -42,8 +38,8 @@
 			width: 100%;
 			position: absolute;
 			text-align: center;
-			transition-property: margin-bottom;
-			transition-duration: 1s;
+
+			.transition( ~"margin-bottom", 1s, ~"");
 			
 			&.moving {
 				margin-bottom: @mobHeight;
@@ -132,7 +128,6 @@
 					}
 					
 				}
-				
 				
 				
 				.life-bar {
