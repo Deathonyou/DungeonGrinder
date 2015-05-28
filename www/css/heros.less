@@ -1,0 +1,221 @@
+
+
+/****************** items *******************/
+@itemIconLength: 30px;
+
+
+.item-icon {
+	width: @itemIconLength;
+	height: @itemIconLength;
+	
+	background-color: #333;
+	background-image: url("@{imagesPath}items.png");
+	background-repeat: no-repeat;
+	
+	&.item-sword1 { background-position: -(@itemIconLength*0) -(@itemIconLength*1) }
+	&.item-bow1 { background-position: -(@itemIconLength*0) -(@itemIconLength*2) }
+	&.item-cold1 { background-position: -(@itemIconLength*0) -(@itemIconLength*3) }
+	&.item-axe1 { background-position: -(@itemIconLength*0) -(@itemIconLength*4) }
+	&.item-mace1 { background-position: -(@itemIconLength*0) -(@itemIconLength*5) }
+	&.item-lighting1 { background-position: -(@itemIconLength*0) -(@itemIconLength*6) }
+}
+
+
+
+/****************** heros panel *******************/
+.heros-panel {
+	
+	
+	/****** hero boxes *******/
+	@modHeroBack: 35%;
+	@modHeroBackHighlight: 30%;
+			
+	.hero-box-warroir {
+		background-color: darken(@warroirColor,@modHeroBack);
+		
+		&.show-hover:hover {
+			background-color: darken(@warroirColor,@modHeroBackHighlight);
+		}
+	}
+	.hero-box-rouge {
+		background-color: darken(@rougeColor,@modHeroBack);
+		
+		&.show-hover:hover {
+			background-color: darken(@rougeColor,@modHeroBackHighlight);
+		}
+	}
+	.hero-box-mage {
+		background-color: darken(@mageColor,@modHeroBack);
+		
+		&.show-hover:hover {
+			background-color: darken(@mageColor,@modHeroBackHighlight);
+		}
+	}
+	
+	
+	/****** heros list *******/
+	.heros-list {
+		.clean-list;
+		
+		.hero {
+			@boxPadding: 5px;
+			
+			display: block;
+			float: left;
+			width: (@gamePanelWidth / 3) - (@boxPadding*2);
+			padding: @boxPadding;
+			font-size: 14px;
+			text-align: center;
+			color: #DDD;
+			cursor: pointer;
+			
+			&.active {
+				cursor: default;
+				
+				.weapons-list li.open {
+					border-color: #F00;
+					cursor: pointer;
+				}
+			}
+			
+			&.attacking {
+				
+				.weapons-list li {
+					border-color: #AAA;
+				}
+				
+			}
+			
+			
+			strong {
+				font-size: 18px;
+			}
+			
+			/*** weapon list ***/
+			.weapons-list {
+				@weaponHeight: 36px;
+				
+				.clean-list;
+				display: block;
+				width: 100%;
+				height: (@weaponHeight+4px);
+				position: relative;
+				background-color: #333;
+				margin-top: 8px;
+				
+				li {
+					border-width: 2px;
+					border-style: solid;
+					border-color: #444;
+					
+					-webkit-transition : border 250ms ease-out;
+					 -o-transition : border 250ms ease-out;
+					 transition : border 250ms ease-out;
+				}
+
+				
+				.weapon-label {
+					height: @weaponHeight;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					color: #FFF;
+					line-height: @weaponHeight;
+					text-align: center;
+					font-size: 11px;
+					
+					.item-icon {
+						position: absolute;
+						top: 5px;
+						left: 8px;
+						background-color: rgba(0,0,0,0.3);
+					}
+				}
+				
+				.cooldown-bar {
+					height: @weaponHeight;
+					background-color: #848400;
+				}
+			}
+			
+		}
+		
+	}
+	
+	/****** hero active *******/
+	.active-hero {
+		
+		height: 150px;
+		padding: 15px;
+		
+		/******** invenotory ********/
+		.hero-inventory {
+			@inventoryHieght: 80px;
+			@inventoryPadding: 8px;
+			@inventBodyHeight: (@inventoryHieght - (@inventoryPadding*2));
+			@inventoryBgColor: rgba(0,0,0,0.3);
+			
+			.clean-list;
+			
+			display: block;
+			height: @inventBodyHeight;
+			padding: @inventoryPadding;
+			
+			background-color: @inventoryBgColor;
+			
+			.inventory-item {
+				display: block;
+				float: left;
+				width: 90px;
+				height: (@inventBodyHeight - 4);
+				margin-right: @inventoryPadding;
+				cursor: pointer;
+				border-width: 2px;
+				border-style: solid;
+				
+				text-align: center;
+				
+				&.equipped {
+					background-color: #5E5E00;
+				}
+				&.not-equipped {
+					background-color: rgba(100,100,100,0.5);
+				}
+				
+				&.selected {
+					border-color: #F00;
+				}
+				&.not-selected {
+					border-color: rgba(0,0,0,0);
+				}
+				
+				.item-icon {
+					margin: 4px auto 5px auto;
+				}
+				
+				.item-name {
+					color: #FFF;
+					line-height: 10px;
+				}
+			}
+		}
+		
+		/******** selected item ********/
+		.selected-item {
+			padding: 5px;
+			color: #CCC;
+			background-color: rgba(255,255,255,0.2);
+			
+			h2 {
+				display: block;
+				margin: 0 0 5px 0;
+				padding: 0;
+				color: #FFF;
+			}
+		}
+		
+	}
+	
+	
+}
