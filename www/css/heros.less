@@ -153,7 +153,7 @@
 		height: 150px;
 		padding: 15px;
 		
-		/******** invenotory ********/
+		/******** inventory ********/
 		.hero-inventory {
 			@inventoryHieght: 80px;
 			@inventoryPadding: 8px;
@@ -165,19 +165,20 @@
 			display: block;
 			height: @inventBodyHeight;
 			padding: @inventoryPadding;
+			white-space: nowrap;
+			overflow: hidden;
 			
 			background-color: @inventoryBgColor;
 			
 			.inventory-item {
-				display: block;
-				float: left;
+				display: inline-block;
+				white-space: nowrap;
 				width: 90px;
 				height: (@inventBodyHeight - 4);
 				margin-right: @inventoryPadding;
 				cursor: pointer;
 				border-width: 2px;
 				border-style: solid;
-				
 				text-align: center;
 				
 				&.equipped {
