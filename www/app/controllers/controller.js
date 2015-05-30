@@ -212,6 +212,7 @@ app.controller('herosController', function ($scope,$rootScope, herosFactory) {
 	
 	// **************** On start of game ******************** 
 	$rootScope.$on('startGame', function() {
+		herosFactory.loadWeaopns();
 		$scope.heros = herosFactory.getHeros();
 		updateCooldowns();
 	});
