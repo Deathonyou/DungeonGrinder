@@ -44,6 +44,7 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		// add starting weapons to Inventory
 		factory.addToInventory(0,'sword');
 		factory.addToInventory(0,'axe');
+		factory.addToInventory(0,'mace');
 		factory.addToInventory(1,'bow');
 		factory.addToInventory(2,'cone_of_cold');
 		factory.addToInventory(2,'chain_lighting');

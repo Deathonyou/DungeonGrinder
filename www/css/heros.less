@@ -150,60 +150,67 @@
 	/****** hero active *******/
 	.active-hero {
 		
-		height: 150px;
+		height: 180px;
 		padding: 15px;
 		
 		/******** inventory ********/
-		.hero-inventory {
+		.inventory-holder {
 			@inventoryHieght: 80px;
 			@inventoryPadding: 8px;
 			@inventBodyHeight: (@inventoryHieght - (@inventoryPadding*2));
 			@inventoryBgColor: rgba(0,0,0,0.3);
-			
-			.clean-list;
-			
-			display: block;
-			height: @inventBodyHeight;
-			padding: @inventoryPadding;
-			white-space: nowrap;
-			overflow: hidden;
-			
+				
+			overflow: auto;
+			height: @inventoryHieght +  20;
 			background-color: @inventoryBgColor;
 			
-			.inventory-item {
-				display: inline-block;
+			.hero-inventory {
+				
+				.clean-list;
+				
+				display: block;
+				float: left;
+				width: auto;
+				height: @inventBodyHeight;
+				padding: @inventoryPadding;
 				white-space: nowrap;
-				width: 90px;
-				height: (@inventBodyHeight - 4);
-				margin-right: @inventoryPadding;
-				cursor: pointer;
-				border-width: 2px;
-				border-style: solid;
-				text-align: center;
 				
-				&.equipped {
-					background-color: #5E5E00;
-				}
-				&.not-equipped {
-					background-color: rgba(100,100,100,0.5);
-				}
-				
-				&.selected {
-					border-color: #F00;
-				}
-				&.not-selected {
-					border-color: rgba(0,0,0,0);
-				}
-				
-				.item-icon {
-					margin: 4px auto 5px auto;
-				}
-				
-				.item-name {
-					color: #FFF;
-					line-height: 10px;
+				.inventory-item {
+					display: inline-block;
+					white-space: nowrap;
+					width: 90px;
+					height: (@inventBodyHeight - 4);
+					margin-right: @inventoryPadding;
+					cursor: pointer;
+					border-width: 2px;
+					border-style: solid;
+					text-align: center;
+					
+					&.equipped {
+						background-color: #5E5E00;
+					}
+					&.not-equipped {
+						background-color: rgba(100,100,100,0.5);
+					}
+					
+					&.selected {
+						border-color: #F00;
+					}
+					&.not-selected {
+						border-color: rgba(0,0,0,0);
+					}
+					
+					.item-icon {
+						margin: 4px auto 5px auto;
+					}
+					
+					.item-name {
+						color: #FFF;
+						line-height: 10px;
+					}
 				}
 			}
+			
 		}
 		
 		/******** selected item ********/
