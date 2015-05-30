@@ -47,7 +47,7 @@ var dataWeaponsList = [
 		text: 'A basic bow'
 	},
 	{
-		id: 'cone_of_cold',
+		id: 'cone_of_cold', 
 		name: 'Cone of Cold',
 		graphic: 'cold1',
 		hero: 'mage',
