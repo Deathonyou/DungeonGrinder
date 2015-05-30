@@ -42,5 +42,16 @@ var dataMobTypes = [
 		sprite: 'cyclops1',
 		rowMin: 1,
 		rowMax: 2
+	},
+	{
+		typeId: 'greenslime',
+		name: 'Green Slime',
+		level: 1,
+		maxHp: 13,
+		bonusGold: 0,
+		types: 'slime',
+		sprite: 'slime1',
+		rowMin: 2,
+		rowMax: 5
 	}
 ];
