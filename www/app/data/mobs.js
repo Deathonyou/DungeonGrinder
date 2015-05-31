@@ -54,4 +54,16 @@ var dataMobTypes = [
 		rowMin: 2,
 		rowMax: 5
 	}
+	,
+	{
+		typeId: 'greedybandit',
+		name: 'Greedy Bandit',
+		level: 1,
+		maxHp: 13,
+		bonusGold: 0,
+		types: 'human',
+		sprite: 'bandit1',
+		rowMin: 2,
+		rowMax: 5
+	}
 ];
