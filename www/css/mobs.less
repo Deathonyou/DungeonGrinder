@@ -4,18 +4,7 @@
 /****************** mob panel *******************/
 
 .mob-panel {
-	
-	/********* mob vars **********/
-	@mobWidth: 55px;
-	@mobHeight: 70px;
-	@mobMargin: 5px;
-	
-	@spritePosSkeleton1: 0;
-	@spritePosGoblin1: 1;
-	@spritePosImp1: 2;
-	@spritePosCyclops1: 3;
-	@spritePosSlime1: 4;
-	
+
 	background-color: @mobPanelColor;
 	position: relative;
 	overflow: hidden;
@@ -61,7 +50,6 @@
 		.mob-cols {
 			.clean-list;
 			
-			
 			.mob {
 				display: inline-block;
 				overflow: hidden;
@@ -69,59 +57,10 @@
 				height: @mobHeight;
 				margin: 4px;
 				position: relative;
-				
-				
 				color: #FFF;
 				
 				background-image: url("@{imagesPath}mobs.png");
 				background-repeat: no-repeat;
-				
-				
-				.mob-sprite-mixin ( @mobPos ) {
-					background-position: 0 -(@mobHeight*@mobPos);
-					
-					&.mob-normal {
-						background-position: 0 -(@mobHeight*@mobPos);
-					}
-					&.mob-step {
-						background-position: -(@mobWidth) -(@mobHeight*@mobPos);
-					}
-					&.mob-hit {
-						background-position: -(@mobWidth*2) -(@mobHeight*@mobPos);
-					}
-				}
-				
-				&.mob-normal {
-					background-position: 0 0;
-				}
-				&.mob-step {
-					background-position: -(@mobWidth) 0;
-				}
-				&.mob-hit {
-					background-position: -(@mobWidth*2) 0;
-				}
-				
-				
-				&.mob-sprite-Skeleton1 {
-					.mob-sprite-mixin(@spritePosSkeleton1);
-				}
-				
-				&.mob-sprite-Goblin1 {
-					.mob-sprite-mixin(@spritePosGoblin1);
-				}
-				
-				&.mob-sprite-imp1 {
-					.mob-sprite-mixin(@spritePosImp1);
-				}
-				
-				&.mob-sprite-cyclops1 {
-					.mob-sprite-mixin(@spritePosCyclops1);
-				}
-				
-				&.mob-sprite-slime1 {
-					.mob-sprite-mixin(@spritePosSlime1);
-				}
-				
 				
 				.life-bar {
 					@barHeight: 7px; 

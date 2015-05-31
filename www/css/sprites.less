@@ -1,0 +1,51 @@
+
+@import "globals";
+
+// ************* item sprites **************
+
+.item-icon {
+
+	// mixin for sprite pos
+	.item-sprite-pos(@col: 0; @row:0) {
+		background-position: -(@itemIconLength*@col) -(@itemIconLength*@row)
+	}
+	
+	// sprite classes
+	&.item-sword1 	{ .item-sprite-pos( 0; 1 ); }
+	&.item-bow1 		{ .item-sprite-pos( 0; 2 ); }
+	&.item-cold1 		{ .item-sprite-pos( 0; 3 ); }
+	&.item-axe1 		{ .item-sprite-pos( 0; 4 ); }
+	&.item-mace1 		{ .item-sprite-pos( 0; 5 ); }
+	&.item-lighting1 	{ .item-sprite-pos( 0; 6 ); }
+	
+}
+
+
+// ************* mob sprites **************
+
+
+.mob {
+	
+	// mixin for sprite pos
+	.mob-sprite-mixin ( @mobPos ) {
+		background-position: 0 -(@mobHeight*@mobPos);
+		
+		&.mob-normal {
+			background-position: 0 -(@mobHeight*@mobPos);
+		}
+		&.mob-step {
+			background-position: -(@mobWidth) -(@mobHeight*@mobPos);
+		}
+		&.mob-hit {
+			background-position: -(@mobWidth*2) -(@mobHeight*@mobPos);
+		}
+	}
+	
+	// sprite classes
+	&.mob-sprite-Skeleton1 		{ .mob-sprite-mixin( 0 ); }
+	&.mob-sprite-Goblin1 			{ .mob-sprite-mixin( 1 ); }
+	&.mob-sprite-imp1 				{ .mob-sprite-mixin( 2 );	}
+	&.mob-sprite-cyclops1 		{ .mob-sprite-mixin( 3 );	}
+	&.mob-sprite-slime1 			{ .mob-sprite-mixin( 4 ); }
+	
+}

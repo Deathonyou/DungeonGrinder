@@ -2,7 +2,6 @@
 @import "globals";
 
 /****************** items *******************/
-@itemIconLength: 30px;
 
 .item-icon {
 	width: @itemIconLength;
@@ -11,19 +10,6 @@
 	background-color: #333;
 	background-image: url("@{imagesPath}items.png");
 	background-repeat: no-repeat;
-	
-	// mixin for sprite pos
-	.item-sprite-pos(@col: 0; @row:0) {
-		background-position: -(@itemIconLength*@col) -(@itemIconLength*@row)
-	}
-	
-	// weapon sprites
-	&.item-sword1 	{ .item-sprite-pos( 0; 1 ); }
-	&.item-bow1 		{ .item-sprite-pos( 0; 2 ); }
-	&.item-cold1 		{ .item-sprite-pos( 0; 3 ); }
-	&.item-axe1 		{ .item-sprite-pos( 0; 4 ); }
-	&.item-mace1 		{ .item-sprite-pos( 0; 5 ); }
-	&.item-lighting1 	{ .item-sprite-pos( 0; 6 ); }
 }
 
 
