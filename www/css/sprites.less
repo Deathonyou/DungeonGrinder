@@ -51,3 +51,61 @@
 	&.mob-sprite-beholder1 		{ .mob-sprite-mixin( 6 ); }
 	
 }
+
+
+// ************* attack pat sprites **************
+
+@patSize: 23px;
+
+// mixin for sprite pos
+.attack-pat-sprite-mixin (@col: 0; @row:0) {
+	background-position: -(@patSize*@col) -(@patSize*@row)
+}
+
+// warrior pat classes
+.hero-box-warrior {
+	@thisCol: 0;
+	
+	.attack-pat {
+		
+		&.pat-left 						{ .attack-pat-sprite-mixin( @thisCol; 0 ); }
+		&.pat-cleaveFromLeft 		{ .attack-pat-sprite-mixin( @thisCol; 1 ); }
+		&.pat-random 					{ .attack-pat-sprite-mixin( @thisCol; 2 ); }
+		&.pat-cone 						{ .attack-pat-sprite-mixin( @thisCol; 3 ); }
+		&.pat-chain 						{ .attack-pat-sprite-mixin( @thisCol; 4 ); }
+		
+	}
+	
+}
+
+// rouge pat classes
+.hero-box-rouge {
+	@thisCol: 1;
+	
+	.attack-pat {
+		
+		&.pat-left 						{ .attack-pat-sprite-mixin( @thisCol; 0 ); }
+		&.pat-cleaveFromLeft 		{ .attack-pat-sprite-mixin( @thisCol; 1 ); }
+		&.pat-random 					{ .attack-pat-sprite-mixin( @thisCol; 2 ); }
+		&.pat-cone 						{ .attack-pat-sprite-mixin( @thisCol; 3 ); }
+		&.pat-chain 						{ .attack-pat-sprite-mixin( @thisCol; 4 ); }
+		
+	}
+	
+}
+
+// mage pat classes
+.hero-box-mage {
+	@thisCol: 2;
+	
+	.attack-pat {
+		
+		&.pat-left 						{ .attack-pat-sprite-mixin( @thisCol; 0 ); }
+		&.pat-cleaveFromLeft 		{ .attack-pat-sprite-mixin( @thisCol; 1 ); }
+		&.pat-random 					{ .attack-pat-sprite-mixin( @thisCol; 2 ); }
+		&.pat-cone 						{ .attack-pat-sprite-mixin( @thisCol; 3 ); }
+		&.pat-chain 						{ .attack-pat-sprite-mixin( @thisCol; 4 ); }
+		
+	}
+	
+}
