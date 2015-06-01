@@ -22,11 +22,11 @@
 	@modHeroBack: 35%;
 	@modHeroBackHighlight: 30%;
 			
-	.hero-box-warroir {
-		background-color: darken(@warroirColor,@modHeroBack);
+	.hero-box-warrior {
+		background-color: darken(@warriorColor,@modHeroBack);
 		
 		&.show-hover:hover {
-			background-color: darken(@warroirColor,@modHeroBackHighlight);
+			background-color: darken(@warriorColor,@modHeroBackHighlight);
 		}
 	}
 	.hero-box-rouge {
@@ -203,6 +203,7 @@
 		
 		/******** selected item ********/
 		.selected-item {
+			position: relative;
 			padding: 5px;
 			color: #CCC;
 			background-color: rgba(255,255,255,0.2);
@@ -212,6 +213,21 @@
 				margin: 0 0 5px 0;
 				padding: 0;
 				color: #FFF;
+			}
+			
+			div {
+				width: 247px;
+			}
+			
+			.attack-pat {
+				position: absolute;
+				top: 30px;
+				right: 10px;
+				width: 23px;
+				height: 23px;
+				
+				background-image: url("@{imagesPath}attackpats.png");
+				background-repeat: no-repeat;
 			}
 		}
 		

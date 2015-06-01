@@ -37,14 +37,13 @@ app.factory('herosFactory', function($rootScope,mobsFactory) {
 		}
 		
 		// hard-coded list of heros (for now)
-		heros.push( createHero('warroir','str','Strength') );
+		heros.push( createHero('warrior','str','Strength') );
 		heros.push( createHero('rouge','dex','Dexterity') );
 		heros.push( createHero('mage','int','Intelligence') );
 		
 		// add starting weapons to Inventory
 		factory.addToInventory(0,'sword');
 		factory.addToInventory(0,'axe');
-		factory.addToInventory(0,'mace');
 		factory.addToInventory(1,'bow');
 		factory.addToInventory(2,'cone_of_cold');
 		factory.addToInventory(2,'chain_lighting');
