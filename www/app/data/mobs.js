@@ -53,8 +53,7 @@ var dataMobTypes = [
 		sprite: 'slime1',
 		rowMin: 2,
 		rowMax: 5
-	}
-	,
+	},
 	{
 		typeId: 'greedybandit',
 		name: 'Greedy Bandit',
@@ -65,5 +64,16 @@ var dataMobTypes = [
 		sprite: 'bandit1',
 		rowMin: 2,
 		rowMax: 5
+	},
+	{
+		typeId: 'nearsightedbeholder',
+		name: 'Nearsighted Beholder',
+		level: 1,
+		maxHp: 13,
+		bonusGold: 0,
+		types: 'magic',
+		sprite: 'beholder1',
+		rowMin: 3,
+		rowMax: 4
 	}
 ];
