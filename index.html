@@ -1,77 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    .hex {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100px;
-      height: 87px;
-      background-color: #f0f0f0;
-      position: relative;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-      margin: 5px;
-      cursor: pointer;
-    }
-    .hex:hover {
-      background-color: #e0e0e0;
-    }
-    .popup {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 120px;
-      padding: 10px;
-      background-color: white;
-      border: 1px solid #ccc;
-      z-index: 1;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <div id="map"></div>
-
-  <script>
-    const map = document.getElementById("map");
-
-    function createHexagon(x, y) {
-      const hex = document.createElement("div");
-      hex.className = "hex";
-      hex.addEventListener("mouseenter", () => {
-        hex.style.backgroundColor = "#e0e0e0";
-      });
-      hex.addEventListener("mouseleave", () => {
-        hex.style.backgroundColor = "#f0f0f0";
-      });
-      hex.addEventListener("click", () => {
-        showPopup(x, y);
-      });
-      map.appendChild(hex);
-    }
-
-    function showPopup(x, y) {
-      const popup = document.createElement("div");
-      popup.className = "popup";
-      popup.innerHTML = `Money: $100<br>Troops: 50<br>Level: 3`;
-      map.appendChild(popup);
-      popup.style.top = `${y}px`;
-      popup.style.left = `${x}px`;
-      popup.style.display = "block";
-      popup.addEventListener("click", () => {
-        popup.style.display = "none";
-      });
-    }
-
-    const numRows = 5;
-    const numCols = 5;
-    for (let i = 0; i < numRows; i++) {
-      for (let j = 0; j < numCols; j++) {
-        const x = j * 120;
-        const y = i * 100 + (j % 2) * 50;
-        createHexagon(x, y);
+  <div id="hexmap-5" class="ex5">
+    <code>
+    {
+      "layout":"odd-r",
+      "hexes": {
+        "A":{"n":"Hex a","q":0,"r":0},
+        "B":{"n":"Hex b","q":0,"r":1},
+        "C":{"n":"Hex c","q":1,"r":0},
+        "D":{"n":"Hex d","q":1,"r":1},
+        "E":{"n":"Hex e","q":2,"r":0},
+        "F":{"n":"Hex f","q":2,"r":1},
+        "G":{"n":"Hex g","q":0,"r":2},
+        "H":{"n":"Hex h","q":1,"r":2},
+        "I":{"n":"Hex i","q":2,"r":2}
       }
     }
-  </script>
+    </code>
 </body>
 </html>
