@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const a = 10 * Math.PI / 6;
+const a = 10 * Math.PI / 30;
 const r = 50;
 
 function init() {
