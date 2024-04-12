@@ -5,7 +5,7 @@ const a = 10 * Math.PI / 30;
 const r = 50;
 
 function init() {
-  drawGrid(canvas.width, canvas.height);
+  drawGrid(canvas.width - 20, canvas.height - 20);
 }
 init();
 
