@@ -1,8 +1,8 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const a = 4 * Math.PI / 6;
-const r = 2;
+const a = 40 * Math.PI / 6;
+const r = 4;
 
 function init() {
   drawGrid(canvas.width, canvas.height);
