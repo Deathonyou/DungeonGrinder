@@ -1,13 +1,44 @@
-.ex5 .hex:hover {
-	background-color: black;
+#message-6 {
+	position: relative;
+	display: inline-block;
+	left: 50%;
+	transform: translate3D(-50%,0,0);
+	background: black;
+	color: white;
+	padding: 0.25em 0.5em;
+	float: left;
+	z-index: 10;
 }
-.ex5 .hex:hover .hexinner, 
-.ex5 .hex:focus .hexinner {
-	/* We have created the hexagon via clip-path so we have to simulate
-	a border using two nested elements. We can set the border colour
-	using "background" and the border width using "margin" */
-	background: rgb(249, 188, 38);!important;
-	color: black;
-	margin: 10px;
+.ex6 .hex {
 	cursor: pointer;
 }
+.ex6 .hex:hover .hexinner, 
+.ex6 .hex:focus .hexinner {
+	background: black!important;
+	color: white;
+}
+.ex-8 {
+	background-color: #66bbe2;
+	padding: 6% 10%;
+	margin: auto;
+	clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+}
+.token {
+	font-family: serif;
+	border-radius: 100%;
+	background-color: wheat;
+	width: 4em;
+	height: 4em;
+	color: black;
+	display: table-cell;
+	vertical-align: middle;
+}
+.token.token-red { color: crimson; }
+.token .id, .token .odds { font-size: 0.5em; }
+.token .dice { font-size: 2em; }
+.hills { background-color: #c8906e; }
+.pasture { background-color: #b5c881; }
+.mountains { background-color: #778088; }
+.fields { background-color: #e9b66c; }
+.forest { background-color: #55855f; }
+.desert { background-color: #f5dcad; }
